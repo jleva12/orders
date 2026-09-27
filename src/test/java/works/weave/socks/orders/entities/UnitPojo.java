@@ -14,6 +14,8 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 public class UnitPojo {
     // Configured for expectation, so we know when a class gets added or removed.
     private static final int EXPECTED_CLASS_COUNT = 8;
@@ -27,6 +29,15 @@ public class UnitPojo {
     public void ensureExpectedPojoCount() {
         List<PojoClass> pojoClasses = PojoClassFactory.getPojoClasses(POJO_PACKAGE, filter);
         Affirm.affirmEquals("Classes added / removed?", EXPECTED_CLASS_COUNT, pojoClasses.size());
+    }
+
+    @Test
+    public void customerOrderStatusDefaultsToPlacedAndCanBeUpdated() {
+        CustomerOrder order = new CustomerOrder();
+        assertEquals("PLACED", order.getStatus());
+
+        order.setStatus("SHIPPED");
+        assertEquals("SHIPPED", order.getStatus());
     }
 
     @Test

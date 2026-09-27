@@ -7,10 +7,14 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import works.weave.socks.orders.entities.CustomerOrder;
 
 import java.util.List;
+import java.util.Optional;
 
 @RepositoryRestResource(path = "orders", itemResourceRel = "order")
 public interface CustomerOrderRepository extends MongoRepository<CustomerOrder, String> {
     @RestResource(path = "customerId")
     List<CustomerOrder> findByCustomerId(@Param("custId") String id);
+
+    @RestResource(path = "shipmentId")
+    Optional<CustomerOrder> findByShipmentId(@Param("shipmentId") String shipmentId);
 }
 
