@@ -34,6 +34,8 @@ public class CustomerOrder {
 
     private Shipment shipment;
 
+    private String status = "PLACED";
+
     private Date date = Calendar.getInstance().getTime();
 
     private float total;
@@ -135,6 +137,14 @@ public class CustomerOrder {
 
     public void setShipment(Shipment shipment) {
         this.shipment = shipment;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public float getTotal() {
